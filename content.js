@@ -22,11 +22,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 var addInput = function (data) {
     console.log('addInput function內:');
     console.log(data);
-    //測試google搜尋
-    // var searchInput = document.getElementById('person_id');
-    // searchInput.value = data.trainId;
-    // var searchButton = document.getElementById('mKlEF');
-    // searchButton.click();
 
     var person_id = document.getElementById('person_id');
     var getin_date = document.getElementById('getin_date');
@@ -34,12 +29,12 @@ var addInput = function (data) {
     var to_station = document.getElementById('to_station');
     var train_no = document.getElementById('train_no');
     var order_qty_str = document.getElementById('order_qty_str');
-    
-    person_id.value = data.person_id; 
-    getin_date.value = data.getin_date;   
-    from_station.value = data.from_station;   
-    to_station.value = data.to_station;  
-    train_no.value = data.train_no;   
+
+    person_id.value = data.person_id;
+    getin_date.value = data.getin_date;
+    from_station.value = data.from_station;
+    to_station.value = data.to_station;
+    train_no.value = data.train_no;
     order_qty_str.value = data.order_qty_str;
 }
 

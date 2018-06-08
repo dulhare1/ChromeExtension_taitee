@@ -22,7 +22,7 @@
                 "chromeos": "Ctrl+Shift+A",
                 "linux": "Ctrl+Shift+A"
             },
-            "description": "shortcut for reloading extensions"
+            "description": "reloading extensions"
         },
         "trigger_page": {
             "suggested_key": {
@@ -32,7 +32,7 @@
                 "chromeos": "Ctrl+Shift+Z",
                 "linux": "Ctrl+Shift+Z"
             },
-            "description": "觸發"
+            "description": "觸發「開始訂票」"
         }
     },
     "content_scripts": [
