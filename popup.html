@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <style>
         body {
-            width: 250px;
+            width: 300px;
+            font-size: 100%
         }
 
         button {
             height: 23px;
             width: 50px;
             outline: none;
+            margin-top: 5px
         }
 
         #clock {
@@ -26,7 +28,7 @@
             float: right;
         }
 
-        #author{
+        #author {
             color: rgb(134, 134, 134);
             float: right;
             font: 0.5em sans-serif;
@@ -396,10 +398,17 @@
                 </select>
             </td>
         </tr>
-
     </table>
+    <span>驗證碼輸入錯誤自動導回</span>
+    <input type="radio" name="randInputErrorBack" value="Y">
+    <span>是</span>
+    <input type="radio" name="randInputErrorBack" value="Y">
+    <span>否</span>
+
+
     <div id="btnDiv">
         <button id="saveBtn">儲存</button>
+        <span id="sucMsg"></span>
     </div>
     <span id="author">@RS</span>
 </body>

@@ -43,6 +43,22 @@
             "js": [
                 "content.js"
             ]
+        },
+        {
+            "matches": [
+                "*://railway.hinet.net/Foreign*check_etno1.jsp*"
+            ],
+            "js": [
+                "checkContent.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://railway.hinet.net/Foreign*eng_order_no1.jsp*"
+            ],
+            "js": [
+                "errorBackContent.js"
+            ]
         }
     ],
     "permissions": [

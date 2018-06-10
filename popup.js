@@ -6,14 +6,15 @@ document.addEventListener('DOMContentLoaded', function (dcle) {
     var to_station = document.getElementById('to_station');
     var train_no = document.getElementById('train_no');
     var order_qty_str = document.getElementById('order_qty_str');
+    var randInputErrorBack = document.getElementsByName('randInputErrorBack');
 
     var today = new Date();
     var beforehandDay;
     // 一般提前14天，禮拜五提前16天
     if (today.getDay() == 5) {
-        beforehandDay = 17;
+        beforehandDay = 18;
     } else {
-        beforehandDay = 15;
+        beforehandDay = 16;
     }
     // 超過11點就無法訂當日票
     if (today.getHours() == 23) {
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function (dcle) {
 
 
     //放入儲存值
-    chrome.storage.sync.get(['person_id', 'getin_date', 'from_station', 'to_station', 'train_no', 'order_qty_str',], function (data) {
+    chrome.storage.sync.get(['person_id', 'getin_date', 'from_station', 'to_station', 'train_no', 'order_qty_str', 'errorBack'], function (data) {
         if (data.person_id) {
             console.log('有東西!');
             console.log(data);
@@ -45,24 +46,31 @@ document.addEventListener('DOMContentLoaded', function (dcle) {
             to_station.value = data.to_station;
             train_no.value = data.train_no;
             order_qty_str.value = data.order_qty_str;
+            data.errorBack ? randInputErrorBack[0].checked = true : randInputErrorBack[1].checked = true;
         } else {
             console.log('空的!');
+            randInputErrorBack[1].checked = false;
         }
     });
 
     var saveButton = document.getElementById('saveBtn');
 
     saveButton.addEventListener('click', function () {
+
+        var errorBack;
+        errorBack = randInputErrorBack[0].checked ? true : false;
+
         chrome.storage.sync.set({
             'person_id': person_id.value,
             'getin_date': getin_date.value,
             'from_station': from_station.value,
             'to_station': to_station.value,
             'train_no': train_no.value,
-            'order_qty_str': order_qty_str.value
+            'order_qty_str': order_qty_str.value,
+            'errorBack': errorBack
         }, function () {
             console.log('person id is ' + person_id.value);
-            var feedbackTag = document.createElement('span');
+            var feedbackTag = document.getElementById('sucMsg');
             feedbackTag.style.color = '#ff0000';
             feedbackTag.innerHTML = '儲存成功!';
             var btnDiv = document.getElementById('btnDiv');
